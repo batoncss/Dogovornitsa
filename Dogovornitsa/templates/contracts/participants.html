@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load sort_by_query_params %}
 {% load crispy_forms_tags %}
 {% block title %}Стороны договора{% endblock %}
 {% block content %}
@@ -7,10 +8,20 @@
     
     {% include 'contracts/participants.form.html' %}
     
+    <form method="get" action="">
+        <input type="text" name="search" placeholder="Search items..." value="{{ search_query }}">
+        <button type="submit">Search</button>
+    </form>
+    
+    
     <table class="table table-striped ">
         <thead>
             <tr>
-                <th scope="col">Имя</th>
+                <th scope="col">
+                    <a href="{% url 'participants' %}{% sort_by_query_params current_get_params "name" %}">
+                        Имя
+                    </a>
+                </th>
                 <th scope="col">Юр.адрес</th>
                 <th scope="col">Факт.адрес</th>
                 <th scope="col">ИНН</th>
@@ -19,7 +30,7 @@
             </tr>
         </thead>
         <tbody>
-        {% for participant in participants %}
+        {% for participant in page_obj %}
             {% include 'contracts/participant-row.html' %}
         {% empty %}
             <tr>
@@ -28,4 +39,23 @@
         {% endfor %}
         </tbody>
     </table>
+    
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    
 {% endblock %}

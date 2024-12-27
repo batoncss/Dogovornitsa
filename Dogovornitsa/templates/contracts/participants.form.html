@@ -9,35 +9,35 @@
      aria-labelledby="create-participant-modal-label"
      aria-hidden="true"
 >
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="create-participant-modal-label">Добавление нового участника договора</h5>
-        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form class="" action="" method="post" id="participant-creation-form" novalidate>
-            {% csrf_token %}
-            {{ form.non_field_errors }}
-            {% for field in form %}
-                <div class="form-group">
-                    <label class="form-label" for="{{ field.auto_id }}">{{ field.label }}</label>
-                    {{ field }}
-                    {% if field.errors %}
-                        <div class="text-danger"><small>{{ field.errors|striptags }}</small></div>
-                    {% endif %}
-                </div>
-            {% endfor %}
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-        <button type="submit" class="btn btn-primary" form="participant-creation-form">Создать</button>
-      </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="create-participant-modal-label">Добавление нового участника договора</h5>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="" action="" method="post" id="participant-creation-form" novalidate>
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    {% for field in form %}
+                    <div class="form-group">
+                        <label class="form-label" for="{{ field.auto_id }}">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="text-danger"><small>{{ field.errors|join:", " }}</small></div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                <button type="submit" class="btn btn-primary" form="participant-creation-form">Создать</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 {% if form_is_invalid %}
