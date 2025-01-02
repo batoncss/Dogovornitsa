@@ -26,15 +26,6 @@ class ParticipantForm(ModelForm):
         label="Имя участника договора"
     )
 
-    # def clean(self):
-    #     cleaned_data = super().clean()
-    #     errors_dict = dict(self.errors)
-    #     for field, field_errors in errors_dict.items():
-    #         for i, error in enumerate(field_errors):
-    #             if error == 'This field is required.':
-    #                 errors_dict[field][i] = f'Параметр не может быть пустым'
-    #     return cleaned_data
-
     def clean_name(self):
         name = self.cleaned_data.get('name')
         if Participant.objects.filter(name=name).exists():

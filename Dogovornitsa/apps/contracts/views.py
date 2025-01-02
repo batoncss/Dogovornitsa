@@ -19,9 +19,12 @@ def participants(request):
     search_query = request.GET.get('search', '')
     order_by = request.GET.get('order_by', 'name')
     order_direction = request.GET.get('order_direction', '')
+    per_page = request.GET.get('per_page', '') if request.GET.get('per_page', '').isdigit() else 5
+
+    print(request.GET.get('per_page', ''))
     print("sort by: ", order_by, "order_direction", order_direction)
     all_participants = Participant.objects.filter(name__contains=search_query).order_by(order_by if order_direction == 'asc' else "-" + order_by)
-    paginator = Paginator(all_participants, 3)
+    paginator = Paginator(all_participants, per_page)
 
     page = request.GET.get('page')
     page_obj = paginator.get_page(page)
