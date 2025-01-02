@@ -21,8 +21,6 @@ def participants(request):
     order_direction = request.GET.get('order_direction', '')
     per_page = request.GET.get('per_page', '') if request.GET.get('per_page', '').isdigit() else 5
 
-    print(request.GET.get('per_page', ''))
-    print("sort by: ", order_by, "order_direction", order_direction)
     all_participants = Participant.objects.filter(name__contains=search_query).order_by(order_by if order_direction == 'asc' else "-" + order_by)
     paginator = Paginator(all_participants, per_page)
 
@@ -40,3 +38,19 @@ def participants_delete(request, participant_id):
     participant = get_object_or_404(Participant, id=participant_id)
     participant.delete()
     return redirect('participants')  # Перезагрузка страницы
+
+def participant_detail(request, participant_id):
+    participant = get_object_or_404(Participant, id=participant_id)
+    edit_mode = request.GET.get('edit_mode', 'false') == 'true'
+    if request.method == 'POST':
+        form = ParticipantForm(request.POST, instance=participant)
+        if form.is_valid():
+            form.save()
+            return redirect('participant-detail', participant_id=participant.id)  # Перезагрузка страницы
+    else:
+        form = ParticipantForm(instance=participant)
+    return render(request, 'contracts/participant-detail.html', {
+        'participant': participant,
+        'edit_mode': edit_mode,
+        'form': form
+    })
