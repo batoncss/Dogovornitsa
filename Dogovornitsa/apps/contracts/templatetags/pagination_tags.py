@@ -24,6 +24,5 @@ def changing_number_elements_on_page(current_params, elements_per_page):
 @register.simple_tag
 def switching_page(current_params, page_number):
     res = QueryDict(current_params, mutable=True)
-    print(res)
     res["page"] = page_number
     return "?" + res.urlencode()
