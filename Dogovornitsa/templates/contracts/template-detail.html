@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ object.name }} - карточка шаблона{% endblock %}
+{% block content %}
+    <h1>Шаблон: {{ object.name }}</h1>
+    <p>{{ object.body }}</p>
+{% endblock %}
