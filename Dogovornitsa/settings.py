@@ -20,8 +20,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
     "Dogovornitsa.apps.pages",
     "Dogovornitsa.apps.contracts",
+    "Dogovornitsa.apps.templates",
 ]
 
 MIDDLEWARE = [

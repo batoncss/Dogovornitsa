@@ -10,7 +10,3 @@ class Participant(models.Model):
 
     def __str__(self):
         return self.name, self.inn
-
-class Template(models.Model):
-    name = models.CharField('Наименование шаблона', max_length=50, null=False)
-    body = models.TextField('Тело шаблона', null=False)
