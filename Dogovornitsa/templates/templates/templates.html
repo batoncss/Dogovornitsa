@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Шаблоны договора{% endblock %}
+{% block content %}
+    <div class="container mt-4">
+        <h2>Список шаблонов</h2>
+        <a href="{% url 'template-create' %}" class="btn btn-success mb-3">Создать</a>
+
+        <!-- Сетка карточек -->
+        <div class="row">
+            {% for template in object_list %}
+                <div class="col-md-4">
+                    <div class="card" style="margin-bottom: 20px;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ template.name }}</h5>
+                            <p class="card-text">{{ template.body|truncatechars:50 }}</p>
+                            <a href="{% url 'template-detail' template.id %}" class="btn btn-primary">Подробнее</a>
+                            <a href="{% url 'template-edit' template.id %}" class="btn btn-warning">Редактировать</a>
+                            <a href="{% url 'template-delete' template.id %}" class="btn btn-danger">Удалить</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Пагинация -->
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1&items_per_page={{ request.GET.items_per_page }}" class="btn btn-outline-primary">&laquo; Первая</a>
+                    <a href="?page={{ page_obj.previous_page_number }}&items_per_page={{ request.GET.items_per_page }}" class="btn btn-outline-primary">Назад</a>
+                {% endif %}
+
+                <span class="current">
+                    Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}&items_per_page={{ request.GET.items_per_page }}" class="btn btn-outline-primary">Вперед</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}&items_per_page={{ request.GET.items_per_page }}" class="btn btn-outline-primary">Последняя &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+
+        <!-- Выбор элементов на странице -->
+        <div class="input-group mb-3">
+            <span class="input-group-text">Элементов на странице</span>
+            <a href="?items_per_page=3" class="btn btn-outline-secondary {% if request.GET.items_per_page == '3' %} active{% endif %}">3</a>
+            <a href="?items_per_page=6" class="btn btn-outline-secondary {% if request.GET.items_per_page == '6' %} active{% endif %}">6</a>
+            <a href="?items_per_page=9" class="btn btn-outline-secondary {% if request.GET.items_per_page == '9' %} active{% endif %}">9</a>
+        </div>
+    </div>
+{% endblock %}

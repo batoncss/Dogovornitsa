@@ -7,5 +7,5 @@ def home(request):
 def making_order(request):
     return render(request, 'pages/making-order.html')
 
-def orders(request):
-    return render(request, 'pages/orders.html')
+def templates(request):
+    return render(request, 'pages/templates.html')
