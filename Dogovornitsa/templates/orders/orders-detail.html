@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ order.name }} - карточка шаблона{% endblock %}
+{% block content %}
+    <h1>Карточка шаблона: {{ order.name }}</h1>
+    <p>{{ order.name }}</p>
+    <p>{{ order.body }}</p>
+    <p>{{ order.template }}</p>
+    <p>{{ order.participant_1 }}</p>
+    <p>{{ order.participant_2 }}</p>
+{% endblock %}

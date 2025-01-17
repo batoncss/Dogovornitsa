@@ -1,8 +1,8 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect, get_object_or_404
 
-from Dogovornitsa.apps.contracts.forms import ParticipantForm
-from Dogovornitsa.apps.contracts.models import Participant
+from Dogovornitsa.apps.participants.forms import ParticipantForm
+from Dogovornitsa.apps.participants.models import Participant
 
 
 def participants(request):
@@ -26,7 +26,7 @@ def participants(request):
 
     page = request.GET.get('page')
     page_obj = paginator.get_page(page)
-    return render(request, "contracts/participants.html", {
+    return render(request, "participants/participants.html", {
         "page_obj": page_obj,
         'form': form,
         "form_is_invalid": form_is_invalid,
@@ -49,7 +49,7 @@ def participant_detail(request, participant_id):
             return redirect('participant-detail', participant_id=participant.id)  # Перезагрузка страницы
     else:
         form = ParticipantForm(instance=participant)
-    return render(request, 'contracts/participant-detail.html', {
+    return render(request, 'participants/participant-detail.html', {
         'participant': participant,
         'edit_mode': edit_mode,
         'form': form

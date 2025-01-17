@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class ContractsConfig(AppConfig):
+class CreateorderConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'Dogovornitsa.apps.contracts'
+    name = 'Dogovornitsa.apps.orders'

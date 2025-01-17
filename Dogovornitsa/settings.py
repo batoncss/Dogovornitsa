@@ -22,8 +22,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ckeditor',
     "Dogovornitsa.apps.pages",
-    "Dogovornitsa.apps.contracts",
+    "Dogovornitsa.apps.participants",
     "Dogovornitsa.apps.templates",
+    "Dogovornitsa.apps.orders",
 ]
 
 MIDDLEWARE = [

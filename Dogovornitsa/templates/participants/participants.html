@@ -6,9 +6,9 @@
     <h2>Список участников</h2>
 
     <div class="mb-3">
-        {% include 'contracts/add-participants.modal.html' %}
+        {% include 'participants/add-participants.modal.html' %}
     </div>
-    
+
     <form method="get" action="">
         <div class="input-group mb-3">
             <input type="hidden" name="per_page" value="{{ request.GET.per_page }}">
@@ -23,44 +23,44 @@
                     <th scope="col">
                         <a href="{% url 'participants' %}{% sorting_by_query_params current_get_params "name" %}">
                             Имя
-                            {% include 'contracts/sorting-indicator.html' with column_name="name" %}
+                            {% include 'participants/sorting-indicator.html' with column_name="name" %}
                         </a>
                     </th>
                     <th scope="col">
                         <a href="{% url 'participants' %}{% sorting_by_query_params current_get_params "legal_address" %}">
                             Юр.адрес
-                            {% include 'contracts/sorting-indicator.html' with column_name="legal_address" %}
+                            {% include 'participants/sorting-indicator.html' with column_name="legal_address" %}
                         </a>
                     </th>
                     <th scope="col">
                         <a href="{% url 'participants' %}{% sorting_by_query_params current_get_params "actual_address" %}">
                             Факт.адрес
-                            {% include 'contracts/sorting-indicator.html' with column_name="actual_address" %}
+                            {% include 'participants/sorting-indicator.html' with column_name="actual_address" %}
                         </a>
                     </th>
                     <th scope="col">
                         <a href="{% url 'participants' %}{% sorting_by_query_params current_get_params "inn" %}">
                             ИНН
-                            {% include 'contracts/sorting-indicator.html' with column_name="inn" %}
+                            {% include 'participants/sorting-indicator.html' with column_name="inn" %}
                         </a>
                     </th>
                     <th scope="col">
                         <a href="{% url 'participants' %}{% sorting_by_query_params current_get_params "kpp" %}">
                             КПП
-                            {% include 'contracts/sorting-indicator.html' with column_name="kpp" %}
+                            {% include 'participants/sorting-indicator.html' with column_name="kpp" %}
                         </a>
                     </th>
                     <th scope="col">
                         <a href="{% url 'participants' %}{% sorting_by_query_params current_get_params "ogrn" %}">
                             ОГРН
-                            {% include 'contracts/sorting-indicator.html' with column_name="ogrn" %}
+                            {% include 'participants/sorting-indicator.html' with column_name="ogrn" %}
                         </a>
                     </th>
                 </tr>
             </thead>
             <tbody>
             {% for participant in page_obj %}
-                {% include 'contracts/participant-row.html' %}
+                {% include 'participants/participant-row.html' %}
             {% empty %}
                 <tr>
                     <td colspan="6">Нет участников для отображения</td>
