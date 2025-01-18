@@ -13,11 +13,21 @@
                             <h5 class="card-title">{{ template.name }}</h5>
                             <p class="card-text">{{ template.body|truncatechars:50 }}</p>
                             <a href="{% url 'orders-edit' template.id %}" class="btn btn-primary">Редактировать</a>
-                            <a href="{% url 'orders-detail' template.id %}" class="btn btn-secondary">Подробнее</a>
+                            <a href="#" onclick="openPrintForm('{% url 'orders-detail' template.id %}')" class="btn btn-secondary">Подробнее</a>
                             <a href="{% url 'orders-delete' template.id %}" class="btn btn-danger">Удалить</a>
                         </div>
                     </div>
                 </div>
             {% endfor %}
         </div>
+    </div>
+    <script>
+        function openPrintForm(url) {
+            window.open(
+                url,
+                "_blank",
+                "width=800,height-600,scrollbars=no,menubar=no,toolbar=no,status=no"
+            )
+        }
+    </script>
 {% endblock %}
