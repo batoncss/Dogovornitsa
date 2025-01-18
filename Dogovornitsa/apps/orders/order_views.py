@@ -14,7 +14,7 @@ class OrdersView(ListView):
 
 class OrdersCreateView(CreateView):
     model = Order
-    fields = ["name", "body", "template", "participant_1", "participant_2"]
+    fields = ["name", "template", "participant_1", "participant_2"]
     template_name = "orders/orders-form.html"
     success_url = reverse_lazy("orders")
 
@@ -23,9 +23,15 @@ class OrdersDetailView(DetailView):
     template_name = "orders/orders-detail.html"
     context_object_name = "order"
 
+    # def get_context_data(self, *, object_list=None, **kwargs):
+    #     context = super(OrdersDetailView, self).get_context_data(**kwargs)
+        # context["preamble"] = context.get("order").template.category
+        # return context
+
+
 class OrdersUpdateView(UpdateView):
     model = Order
-    fields = ["name", "body", "template", "participant_1", "participant_2"]
+    fields = ["name", "template", "participant_1", "participant_2"]
     template_name = "orders/orders-form.html"
     success_url = reverse_lazy("orders")
 

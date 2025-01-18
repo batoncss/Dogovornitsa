@@ -2,8 +2,14 @@
 {#{% load static %}#}
 {% block title %}{{ order.name }} - карточка шаблона{% endblock %}
 {% block content %}
-    <p>{{ order.participant_1 }} именуемый в дальнейшем продавец с одной стороны и {{ order.participant_2 }} именуемый в дальнейшем покупатель с другой стороны заключили договор </p>
+
+    {% if order.template.category == "sales" %}
+        {% include "templates/preamble_sales.html" %}
+    {% elif order.template.category == "rent" %}
+        {% include "templates/preamble_rent.html" %}
+    {% else %}
+        <p style="color: red">Шаблон типа {{ order.template.category }} не зарегистрирован</p>
+    {% endif %}
     <p>{{ order.template.body|safe }}</p>
-    <p>{{ order.participant_1 }}</p>
-    <p>{{ order.participant_2 }}</p>
+    {% include "templates/signs.html" %}
 {% endblock %}

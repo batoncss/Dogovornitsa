@@ -14,7 +14,7 @@ class TemplatesView(ListView):
 
 class TemplatesCreateView(CreateView):
     model = Template
-    fields = ["name", "body"]
+    fields = ["name", "body", "category"]
     template_name = "templates/templates-form.html"
     success_url = reverse_lazy("templates")
 
@@ -25,7 +25,7 @@ class TemplatesDetailView(DetailView):
 
 class TemplatesUpdateView(UpdateView):
     model = Template
-    fields = ["name", "body"]
+    fields = ["name", "body", "category"]
     template_name = "templates/templates-form.html"
     success_url = reverse_lazy("templates")
 
