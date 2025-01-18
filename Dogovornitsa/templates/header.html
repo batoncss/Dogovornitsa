@@ -23,11 +23,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'participants' %}">Участники договора</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'templates' %}">Договоры</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Договоры</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'templates' %}">Шаблоны</a></li>
+                        <li><a class="dropdown-item" href="{% url 'orders' %}">Мои договоры</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'makingOrder' %}">Контакты</a>
+                    <a class="nav-link">Контакты</a>
                 </li>
             </ul>
         </div>

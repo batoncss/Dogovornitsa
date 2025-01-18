@@ -9,4 +9,4 @@ class Participant(models.Model):
     ogrn = models.CharField('ОГРН', null=True, default=None, max_length=15)
 
     def __str__(self):
-        return self.name, self.inn
+        return f"{self.name} (ИНН: {self.inn})"

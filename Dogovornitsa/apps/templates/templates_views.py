@@ -14,17 +14,22 @@ class TemplatesView(ListView):
 
 class TemplatesCreateView(CreateView):
     model = Template
-    fields = ["name", "body"]
+    fields = ["name", "body", "category"]
     template_name = "templates/templates-form.html"
     success_url = reverse_lazy("templates")
 
+class TemplatesDetailView(DetailView):
+    model = Template
+    template_name = "templates/templates-detail.html"
+    context_object_name = "template"
+
 class TemplatesUpdateView(UpdateView):
     model = Template
-    fields = ["name", "body"]
-    template_name = "contracts/../../templates/templates/templates-form.html"
+    fields = ["name", "body", "category"]
+    template_name = "templates/templates-form.html"
     success_url = reverse_lazy("templates")
 
 class TemplatesDeleteView(DeleteView):
     model = Template
-    template_name = "contracts/../../templates/templates/templates-delete.html"
+    template_name = "templates/templates-delete.html"
     success_url = reverse_lazy("templates")

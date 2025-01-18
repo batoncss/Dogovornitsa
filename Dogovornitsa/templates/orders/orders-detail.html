@@ -1,0 +1,15 @@
+{% extends "base_no_layout.html" %}
+{#{% load static %}#}
+{% block title %}{{ order.name }} - карточка шаблона{% endblock %}
+{% block content %}
+
+    {% if order.template.category == "sales" %}
+        {% include "templates/preamble_sales.html" %}
+    {% elif order.template.category == "rent" %}
+        {% include "templates/preamble_rent.html" %}
+    {% else %}
+        <p style="color: red">Шаблон типа {{ order.template.category }} не зарегистрирован</p>
+    {% endif %}
+    <p>{{ order.template.body|safe }}</p>
+    {% include "templates/signs.html" %}
+{% endblock %}

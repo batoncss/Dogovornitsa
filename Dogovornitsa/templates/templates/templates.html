@@ -14,8 +14,8 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ template.name }}</h5>
                             <p class="card-text">{{ template.body|truncatechars:50 }}</p>
-                            <a href="{% url 'template-detail' template.id %}" class="btn btn-primary">Подробнее</a>
-                            <a href="{% url 'template-edit' template.id %}" class="btn btn-warning">Редактировать</a>
+                            <a href="{% url 'template-edit' template.id %}" class="btn btn-primary">Редактировать</a>
+                            <a href="{% url 'template-detail' template.id %}" class="btn btn-secondary">Подробнее</a>
                             <a href="{% url 'template-delete' template.id %}" class="btn btn-danger">Удалить</a>
                         </div>
                     </div>

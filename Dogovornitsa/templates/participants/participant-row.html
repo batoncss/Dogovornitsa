@@ -6,7 +6,7 @@
     <td>{{ participant.kpp }}</td>
     <td>{{ participant.ogrn }}</td>
     <td>
-        <form method="POST" action="{% url 'participants_delete' participant.id %}">
+        <form method="POST" action="{% url 'participants-delete' participant.id %}">
             {% csrf_token %}
             <button type="submit" class="btn btn-outline-danger btn-sm">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16">
