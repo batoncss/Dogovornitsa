@@ -1,5 +1,4 @@
 from django.shortcuts import render
 
-
-def home(request):
+def templates_home(request):
     return render(request, 'pages/home.html')

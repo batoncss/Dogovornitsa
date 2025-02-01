@@ -56,8 +56,8 @@ class ParticipantForm(ModelForm):
         ogrn = self.cleaned_data.get('ogrn')
         if Participant.objects.filter(name=ogrn).exists():
             raise ValidationError('Участник с таким ОГРН уже зарегистрирован')
-        if len(ogrn) != 15:
-            raise ValidationError('КПП должен состоять из 15 цифр')
+        if len(ogrn) != 13:
+            raise ValidationError('ОГРН должен состоять из 13 цифр')
         if not ogrn.isdigit():
-            raise ValidationError('КПП должен содержать только цифры')
+            raise ValidationError('ОГРН должен содержать только цифры')
         return ogrn

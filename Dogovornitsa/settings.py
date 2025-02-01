@@ -21,7 +21,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ckeditor',
-    "Dogovornitsa.apps.pages",
     "Dogovornitsa.apps.participants",
     "Dogovornitsa.apps.templates",
     "Dogovornitsa.apps.orders",
