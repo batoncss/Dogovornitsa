@@ -1,11 +1,9 @@
-from ckeditor.fields import RichTextField
 from django.db import models
 from Dogovornitsa.apps.templates.models import Template
 from Dogovornitsa.apps.participants.models import Participant
 
 class Order(models.Model):
     name = models.CharField('Наименование договора', max_length=50, unique=True)
-    # body = RichTextField('Тело договора')
     template = models.ForeignKey(
         Template,
         on_delete=models.SET_NULL,

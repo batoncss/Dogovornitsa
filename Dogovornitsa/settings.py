@@ -1,30 +1,33 @@
 import os
 import sys
 from pathlib import Path
+from configparser import ConfigParser
 
 
+config = ConfigParser(interpolation=None)
+config.read('config.ini')
 BASE_DIR = Path(__file__).resolve().parent.parent
 PROJECT_ROOT = os.path.dirname(__file__)
 sys.path.insert(0, os.path.join(PROJECT_ROOT, 'apps'))
-SECRET_KEY = 'django-insecure-tx=vj&=f)1+)hr&8!4!_8ji#d6ukza)s_pyhn%v=to#o)%(x58'
+SECRET_KEY = config['KEYS']['SecretKeyDjango']
 
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'ckeditor',
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "django_ckeditor_5",
     "Dogovornitsa.apps.pages",
     "Dogovornitsa.apps.participants",
     "Dogovornitsa.apps.templates",
     "Dogovornitsa.apps.orders",
+    "Dogovornitsa.apps.iam",
 ]
 
 MIDDLEWARE = [
@@ -84,7 +87,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'UTC'
 
@@ -98,3 +101,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL = "iam.User"
+

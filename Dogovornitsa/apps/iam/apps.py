@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class CreateOrderConfig(AppConfig):
+class IamConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'Dogovornitsa.apps.orders'
+    name = 'Dogovornitsa.apps.iam'

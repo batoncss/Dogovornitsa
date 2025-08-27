@@ -1,39 +1,62 @@
-<header class="bg-primary text-white">
-    <nav class="navbar navbar-expand-lg navbar-dark container">
-        <a class="navbar-brand" href="{% url 'home' %}">Договорница</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="{% url 'home' %}">Главная</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link">О нас</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'participants' %}">Участники договора</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Договоры</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'templates' %}">Шаблоны</a></li>
-                        <li><a class="dropdown-item" href="{% url 'orders' %}">Мои договоры</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link">Контакты</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+<header class="bg-primary shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-dark container">
+    <a class="navbar-brand fw-bold" href="{% url 'home' %}">
+      <i class="bi bi-journal-text me-1"></i> Договорница
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Переключить меню"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">
+            <i class="bi bi-house-door me-1"></i> Главная
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <i class="bi bi-info-circle me-1"></i> О нас
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'participants' %}active{% endif %}" href="{% url 'participants' %}">
+            <i class="bi bi-people me-1"></i> Участники договора
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-file-earmark-text me-1"></i> Договоры
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'templates' %}"><i class="bi bi-layout-text-sidebar me-1"></i> Шаблоны</a></li>
+            <li><a class="dropdown-item" href="{% url 'orders' %}"><i class="bi bi-folder2-open me-1"></i> Мои договоры</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <i class="bi bi-envelope me-1"></i> Контакты
+          </a>
+        </li>
+      </ul>
+
+      <!-- Кнопки входа / регистрации -->
+      <div class="ms-lg-3 d-flex">
+        <a href="{% url 'login' %}" class="btn btn-outline-light me-2">
+          <i class="bi bi-box-arrow-in-right me-1"></i> Войти
+        </a>
+        <a href="{% url 'register' %}" class="btn btn-warning">
+          <i class="bi bi-person-plus me-1"></i> Регистрация
+        </a>
+      </div>
+    </div>
+  </nav>
 </header>
